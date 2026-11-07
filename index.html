@@ -1,372 +1,1143 @@
 <!DOCTYPE html>
+
 <html lang="vi" class="h-full">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CORONA SLOT TECHNICIAN</title>
+
     <!-- Tailwind CSS CDN -->
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Font Awesome Icons -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Google Fonts -->
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <script>
+
         tailwind.config = {
+
             theme: {
+
                 extend: {
+
                     fontFamily: {
+
                         sans: ['Inter', 'sans-serif'],
+
                     },
+
                     colors: {
+
                         casino: {
+
                             dark: '#0f172a',
+
                             card: '#1e293b',
+
                             accent: '#3b82f6',
+
                             ram: '#ec4899',
+
                             manual: '#10b981',
+
                         }
+
                     }
+
                 }
+
             }
+
         }
+
     </script>
+
     <style>
+
         .fade-in {
+
             animation: fadeIn 0.3s ease-in-out forwards;
+
         }
+
         @keyframes fadeIn {
+
             from { opacity: 0; transform: translateY(8px); }
+
             to { opacity: 1; transform: translateY(0); }
+
         }
+
         ::-webkit-scrollbar {
+
             width: 6px;
+
         }
+
         ::-webkit-scrollbar-track {
+
             background: #0f172a;
+
         }
+
         ::-webkit-scrollbar-thumb {
+
             background: #334155;
+
             border-radius: 4px;
+
         }
+
         ::-webkit-scrollbar-thumb:hover {
+
             background: #475569;
+
         }
+
     </style>
+
 </head>
+
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
 
+
+
     <!-- Header / Navigation Bar -->
+
     <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-40">
+
         <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+
             <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+
                     <i class="fa-solid font-bold text-white text-lg fa-microchip"></i>
+
                 </div>
+
                 <div>
+
                     <h1 class="font-bold text-lg text-white leading-tight">CORONA SLOT TECHNICIAN</h1>
+
                 </div>
+
             </div>
+
+
 
             <!-- Header Action Info / Back Button -->
+
             <div id="header-actions" class="flex items-center space-x-2">
+
                 <!-- Dynamic Content inserted via JS -->
+
             </div>
+
         </div>
+
     </header>
 
+
+
     <!-- Breadcrumb Bar -->
+
     <nav id="breadcrumb-container" class="bg-slate-900/40 border-b border-slate-800/60 hidden">
+
         <div class="max-w-5xl mx-auto px-4 py-2.5 text-sm flex items-center space-x-2 text-slate-400 overflow-x-auto">
-            <button onclick="navigateTo('home')" class="hover:text-blue-400 transition flex items-center gap-1 cursor-pointer">
+
+            <button onclick="navigateTo('home')" class="hover:text-blue-400 transition flex items-center gap-1">
+
                 <i class="fa-solid fa-house text-xs"></i> Trang chủ
+
             </button>
+
             <span id="breadcrumb-category-sep" class="hidden"><i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i></span>
-            <button id="breadcrumb-category" onclick="navigateTo('machines')" class="hover:text-blue-400 transition hidden capitalize font-medium text-slate-300 cursor-pointer"></button>
+
+            <button id="breadcrumb-category" onclick="navigateTo('machines')" class="hover:text-blue-400 transition hidden capitalize font-medium text-slate-300"></button>
+
             <span id="breadcrumb-machine-sep" class="hidden"><i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i></span>
+
             <span id="breadcrumb-machine" class="text-blue-400 font-semibold hidden truncate max-w-[150px] sm:max-w-xs"></span>
+
         </div>
+
     </nav>
 
+
+
     <!-- Main Content Container -->
+
     <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-6">
+
         
+
         <!-- View 1: HOME (Choice Category: Ram Clear or Manual) -->
+
         <section id="view-home" class="fade-in space-y-6">
+
             <div class="text-center my-6 sm:my-10 space-y-2">
+
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">TECHNICAL LIBRARY</h2>
+
                 <p class="text-slate-400 text-sm sm:text-base max-w-md mx-auto">Vui lòng chọn loại quy trình/tài liệu bạn muốn tra cứu.</p>
+
             </div>
+
+
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto pt-4">
+
                 <!-- Option 1: Ram Clear -->
-                <button onclick="selectCategory('ramclear')" class="group relative bg-gradient-to-br from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 border border-slate-700/70 hover:border-pink-500/50 rounded-2xl p-6 sm:p-8 text-left transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-pink-500/10 flex flex-col justify-between overflow-hidden cursor-pointer">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl group-hover:bg-pink-500/20 transition-all pointer-events-none"></div>
-                    <div class="space-y-4 relative z-10 pointer-events-none">
+
+                <button onclick="selectCategory('ramclear')" class="group relative bg-gradient-to-br from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 border border-slate-700/70 hover:border-pink-500/50 rounded-2xl p-6 sm:p-8 text-left transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-pink-500/10 flex flex-col justify-between overflow-hidden">
+
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl group-hover:bg-pink-500/20 transition-all"></div>
+
+                    <div class="space-y-4 relative z-10">
+
                         <div class="w-16 h-16 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-2xl group-hover:scale-110 group-hover:bg-pink-500 group-hover:text-white transition-all duration-300 shadow-inner">
+
                             <i class="fa-solid fa-memory"></i>
+
                         </div>
+
                         <div>
+
                             <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 mb-1">Quy trình</span>
+
                             <h3 class="text-2xl font-bold text-white group-hover:text-pink-300 transition-colors">RAM CLEAR</h3>
+
                             <p class="text-slate-400 text-sm mt-2 leading-relaxed">Các bước thao tác khi làm Ram Clear, cài đặt cấu hình cho các dòng máy Slot Machines.</p>
+
                         </div>
+
                     </div>
-                    <div class="mt-8 flex items-center text-sm font-semibold text-pink-400 group-hover:text-pink-300 gap-2 relative z-10 pointer-events-none">
+
+                    <div class="mt-8 flex items-center text-sm font-semibold text-pink-400 group-hover:text-pink-300 gap-2 relative z-10">
+
                         <span>Chọn dòng máy</span>
+
                         <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+
                     </div>
+
                 </button>
+
+
 
                 <!-- Option 2: Manual -->
-                <button onclick="selectCategory('manual')" class="group relative bg-gradient-to-br from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 border border-slate-700/70 hover:border-emerald-500/50 rounded-2xl p-6 sm:p-8 text-left transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-emerald-500/10 flex flex-col justify-between overflow-hidden cursor-pointer">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none"></div>
-                    <div class="space-y-4 relative z-10 pointer-events-none">
+
+                <button onclick="selectCategory('manual')" class="group relative bg-gradient-to-br from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 border border-slate-700/70 hover:border-emerald-500/50 rounded-2xl p-6 sm:p-8 text-left transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-emerald-500/10 flex flex-col justify-between overflow-hidden">
+
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+
+                    <div class="space-y-4 relative z-10">
+
                         <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-inner">
+
                             <i class="fa-solid fa-book-open"></i>
+
                         </div>
+
                         <div>
+
                             <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 mb-1">Tài liệu</span>
+
                             <h3 class="text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors">MANUAL</h3>
+
                             <p class="text-slate-400 text-sm mt-2 leading-relaxed">Sách hướng dẫn sử dụng, tài liệu sơ đồ mạch điện, tra cứu mã lỗi (Error codes) và bảo trì thiết bị kỹ thuật.</p>
+
                         </div>
+
                     </div>
-                    <div class="mt-8 flex items-center text-sm font-semibold text-emerald-400 group-hover:text-emerald-300 gap-2 relative z-10 pointer-events-none">
+
+                    <div class="mt-8 flex items-center text-sm font-semibold text-emerald-400 group-hover:text-emerald-300 gap-2 relative z-10">
+
                         <span>Xem danh sách Manual</span>
+
                         <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+
                     </div>
+
                 </button>
+
             </div>
+
         </section>
+
+
 
         <!-- View 2: MACHINE LIST VIEW -->
+
         <section id="view-machines" class="fade-in space-y-6 hidden">
+
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+
                 <div>
+
                     <h2 id="machine-view-title" class="text-xl font-bold text-white flex items-center gap-2">
+
                     </h2>
+
                     <p class="text-xs text-slate-400 mt-1">Chọn loại thiết bị hoặc nhà sản xuất bên dưới để xem danh sách PDF</p>
+
                 </div>
+
                 <div class="relative w-full sm:w-64">
+
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
+
                     <input type="text" id="search-input" onkeyup="filterMachines()" placeholder="Tìm tên máy..." class="w-full bg-slate-950 border border-slate-700/80 rounded-xl pl-9 pr-8 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
-                    <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 text-xs cursor-pointer p-1">
+
+                    <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 text-xs">
+
                         <i class="fa-solid fa-xmark"></i>
+
                     </button>
+
                 </div>
+
             </div>
+
+
 
             <div id="machine-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
             </div>
+
+
 
             <div id="empty-machine-search" class="hidden text-center py-12 bg-slate-900/30 rounded-2xl border border-slate-800/50">
+
                 <i class="fa-solid fa-box-open text-4xl text-slate-600 mb-3"></i>
+
                 <p class="text-slate-400 text-sm">Không tìm thấy máy phù hợp với từ khóa tìm kiếm.</p>
+
             </div>
+
         </section>
+
+
 
         <!-- View 3: PDF LIST VIEW -->
+
         <section id="view-pdf-list" class="fade-in space-y-6 hidden">
+
             <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-5 rounded-2xl border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg">
+
                 <div class="flex items-center space-x-4">
+
                     <div id="pdf-list-icon" class="w-12 h-12 rounded-xl flex items-center justify-center text-xl text-white shadow-inner">
+
                     </div>
+
                     <div>
+
                         <span id="pdf-list-badge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold"></span>
+
                         <h2 id="pdf-machine-title" class="text-xl font-bold text-white mt-0.5">---</h2>
+
                     </div>
+
                 </div>
+
                 <div class="text-xs text-slate-400 bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800/80 flex items-center gap-2">
+
                     <i class="fa-solid fa-file-pdf text-red-400 text-sm"></i>
+
                     <span id="pdf-count-label">0 file tài liệu</span>
+
                 </div>
+
             </div>
+
+
 
             <div class="space-y-3">
+
                 <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 px-1">Danh sách file tài liệu (Theo thứ tự bước):</h3>
+
                 <div id="pdf-items-container" class="space-y-2.5">
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <!-- View 4: PDF VIEWER -->
+
         <section id="view-pdf-render" class="fade-in space-y-4 hidden">
+
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-900 p-3 sm:p-4 rounded-xl border border-slate-800">
+
                 <div class="flex items-center space-x-3 overflow-hidden">
+
                     <span id="pdf-viewer-number" class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 font-bold flex items-center justify-center text-sm shrink-0">1</span>
+
                     <h3 id="pdf-viewer-title" class="font-semibold text-white text-sm sm:text-base truncate">Document Title</h3>
+
                 </div>
+
                 <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
-                    <a id="pdf-open-external" href="#" target="_blank" class="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition flex items-center gap-1.5 cursor-pointer">
+
+                    <a id="pdf-open-external" href="#" target="_blank" class="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+
                         <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở tab mới
+
                     </a>
-                    <button onclick="backToPdfList()" class="px-3 py-1.5 text-xs font-medium bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition flex items-center gap-1.5 cursor-pointer">
+
+                    <button onclick="backToPdfList()" class="px-3 py-1.5 text-xs font-medium bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition flex items-center gap-1.5">
+
                         <i class="fa-solid fa-xmark"></i> Đóng
+
                     </button>
+
                 </div>
+
             </div>
 
+
+
             <div class="w-full bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl h-[70vh] sm:h-[78vh] relative">
-                <!-- Đã cấu hình pointer-events-none để lớp loading không bị kẹt che khuất thao tác bấm -->
-                <div id="pdf-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/90 z-10 space-y-3 pointer-events-none transition-opacity duration-300">
+
+                <div id="pdf-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/90 z-10 space-y-3">
+
                     <div class="w-8 h-8 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
-                    <p class="text-xs text-slate-400">Đang tải và render tài liệu PDF trực tuyến...</p>
+
+                    <p class="text-xs text-slate-400">Đang tải tài liệu PDF...</p>
+
                 </div>
-                <!-- Khung hiển thị PDF chuẩn -->
-                <div id="pdf-container-box" class="w-full h-full"></div>
+
+                <iframe id="pdf-iframe" src="" class="w-full h-full border-0"></iframe>
+
             </div>
+
         </section>
+
+
 
     </main>
 
+
+
     <footer class="mt-auto border-t border-slate-800/80 bg-slate-950 py-4 text-center text-xs text-slate-500">
+
         <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+
             <p>© CORONA SLOT TECHNICIAN System</p>
+
             <p class="flex items-center gap-1">
+
                 <i class="fa-solid fa-shield-halved text-slate-600"></i> Tra cứu tài liệu nội bộ
+
             </p>
+
         </div>
+
     </footer>
 
+
+
     <script>
+
         function hidePdfLoading() {
+
             const loading = document.getElementById('pdf-loading');
+
             if (loading) {
-                loading.style.opacity = '0';
-                setTimeout(() => {
-                    loading.classList.add('hidden');
-                    loading.style.opacity = '1';
-                }, 300);
+
+                loading.classList.add('hidden');
+
             }
+
         }
+
+
 
         const casinoData = {
+
             ramclear: [
+
                 {
+
                     id: "aristocrat-helix",
+
                     name: "Aristocrat Helix / Arc",
+
                     categoryName: "Slot Machine",
+
                     icon: "fa-gamepad",
+
                     docs: [
-                        { id: 1, title: "1. Aristocrat WorldBase 5.04 RAM & CF Card Backup", url: "https://github.com/coronaslot/corona.slottech/raw/main/AristocratWorldBase%205.04.pdf" },
+
+                        { id: 1, title: "1. Aristocrat WorldBase 5.04 RAM & CF Card Backup", url: "https://docs.google.com/viewer?url=https://github.com/coronaslot/corona.slottech/raw/main/AristocratWorldBase%205.04.pdf=true" },
+
+                      
+
+                        
+
                     ]
+
                 },
+
                 {
+
                     id: "igt-avp",
+
                     name: "IGT AVP / CrystalCurve",
+
                     categoryName: "Slot Machine",
+
                     icon: "fa-desktop",
+
                     docs: [
+
                         { id: 1, title: "1. Hướng dẫn sử dụng Key Clear Ekey 7 & Diagnostic", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" },
+
                         { id: 2, title: "2. Quy trình RAM Clear đầy đủ hệ thống IGT AVP", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" },
+
                         { id: 3, title: "3. Cài đặt SAS Protocol & Network cho IGT", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" }
+
                     ]
+
                 },
+
                 {
+
                     id: "bally-alpha",
+
                     name: "Bally Alpha 2 / Wave",
+
                     categoryName: "Slot Machine",
+
                     icon: "fa-microchip",
+
                     docs: [
+
                         { id: 1, title: "1. Sử dụng OS Clear Compact Flash Bally Alpha 2", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" },
+
                         { id: 2, title: "2. Quy trình thiết lập lại NVRAM & Khôi phục dữ liệu", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" }
+
                     ]
+
                 },
+
                 {
+
                     id: "konami-k2v",
+
                     name: "Konami Concerto / KX500",
+
                     categoryName: "Slot Machine",
+
                     icon: "fa-sliders",
+
                     docs: [
+
                         { id: 1, title: "1. Hướng dẫn nạp CompactFlash RAM Clear Konami", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" },
+
                         { id: 2, title: "2. Các bước cấu hình Option Switches & Audit Mode", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" }
+
                     ]
+
                 }
+
             ],
+
             manual: [
+
                 {
+
                     id: "aristocrat-manual",
+
                     name: "Aristocrat Service Manual",
+
                     categoryName: "Hardware & Schematics",
+
                     icon: "fa-book-atlas",
+
                     docs: [
+
                         { id: 1, title: "1. Sơ đồ mạch điện & Power Supply Unit (PSU)", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" },
+
                         { id: 2, title: "2. Hướng dẫn sửa chữa Bill Acceptor & Printer", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" }
+
                     ]
+
                 },
+
                 {
+
                     id: "igt-manual",
+
                     name: "IGT Machine User & Tech Guide",
+
                     categoryName: "User Manual",
+
                     icon: "fa-file-lines",
+
                     docs: [
+
                         { id: 1, title: "1. Sách hướng dẫn vận hành kỹ thuật viên", url: "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf" }
+
                     ]
+
                 }
+
             ]
+
         };
+
+
 
         let currentState = {
+
             view: 'home',
+
             category: null,
+
             selectedMachine: null,
+
             selectedDoc: null
+
         };
 
+
+
         function navigateTo(viewName) {
+
             currentState.view = viewName;
 
+
+
             document.getElementById('view-home').classList.add('hidden');
+
             document.getElementById('view-machines').classList.add('hidden');
+
             document.getElementById('view-pdf-list').classList.add('hidden');
+
             document.getElementById('view-pdf-render').classList.add('hidden');
 
+
+
             const targetView = document.getElementById(`view-${viewName}`);
+
             if (targetView) {
+
                 targetView.classList.remove('hidden');
+
             }
+
+
 
             updateHeaderAndBreadcrumb();
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
         }
+
+
 
         function selectCategory(catKey) {
+
             currentState.category = catKey;
+
             currentState.selectedMachine = null;
+
             currentState.selectedDoc = null;
 
+
+
             document.getElementById('search-input').value = '';
+
             document.getElementById('clear-search-btn').classList.add('hidden');
 
+
+
             renderMachineList();
+
             navigateTo('machines');
+
         }
 
+
+
         function renderMachineList() {
+
             const cat = currentState.category;
+
             const isRam = cat === 'ramclear';
+
             const machines = casinoData[cat] || [];
 
+
+
             const titleEl = document.getElementById('machine-view-title');
+
             if (isRam) {
+
                 titleEl.innerHTML = `<i class="fa-solid fa-memory text-pink-500"></i> Danh Sách Máy - RAM CLEAR`;
+
             } else {
+
                 titleEl.innerHTML = `<i class="fa-solid fa-book-open text-emerald-500"></i> Danh Sách Máy - MANUAL`;
+
             }
 
+
+
             const grid = document.getElementById('machine-grid');
+
             grid.innerHTML = '';
 
+
+
             machines.forEach(m => {
+
                 const docCount = m.docs ? m.docs.length : 0;
+
                 const card = document.createElement('div');
+
                 card.className = `machine-card group bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 hover:bg-slate-850 cursor-pointer transition-all duration-200 flex flex-col justify-between shadow-md hover:shadow-xl`;
+
                 card.setAttribute('data-name', m.name.toLowerCase());
+
                 card.onclick = () => selectMachine(m);
 
+
+
                 const hoverBorderColor = isRam ? 'group-hover:text-pink-400' : 'group-hover:text-emerald-400';
+
                 const badgeColor = isRam ? 'bg-pink-500/10 text-pink-400 border-pink-500/20' : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
 
+
+
                 card.innerHTML = `
-                    <div class="space-y-3 pointer-events-none">
+
+                    <div class="space-y-3">
+
                         <div class="flex items-center justify-between">
-                            <div class
+
+                            <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 text-lg ${hoverBorderColor} transition-colors">
+
+                                <i class="fa-solid ${m.icon || 'fa-vr-cardboard'}"></i>
+
+                            </div>
+
+                            <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${badgeColor}">
+
+                                ${docCount} Tài liệu PDF
+
+                            </span>
+
+                        </div>
+
+                        <div>
+
+                            <span class="text-[11px] text-slate-500 font-medium">${m.categoryName || 'Casino Equipment'}</span>
+
+                            <h4 class="font-bold text-white text-base ${hoverBorderColor} transition-colors line-clamp-1">${m.name}</h4>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+
+                        <span>Mở tài liệu</span>
+
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:translate-x-1 transition-transform"></i>
+
+                    </div>
+
+                `;
+
+                grid.appendChild(card);
+
+            });
+
+
+
+            document.getElementById('empty-machine-search').classList.add('hidden');
+
+        }
+
+
+
+        function filterMachines() {
+
+            const input = document.getElementById('search-input');
+
+            const clearBtn = document.getElementById('clear-search-btn');
+
+            const filter = input.value.toLowerCase().trim();
+
+            const cards = document.querySelectorAll('.machine-card');
+
+            let visibleCount = 0;
+
+
+
+            if (filter.length > 0) {
+
+                clearBtn.classList.remove('hidden');
+
+            } else {
+
+                clearBtn.classList.add('hidden');
+
+            }
+
+
+
+            cards.forEach(card => {
+
+                const name = card.getAttribute('data-name');
+
+                if (name.includes(filter)) {
+
+                    card.classList.remove('hidden');
+
+                    visibleCount++;
+
+                } else {
+
+                    card.classList.add('hidden');
+
+                }
+
+            });
+
+
+
+            const emptyMsg = document.getElementById('empty-machine-search');
+
+            if (visibleCount === 0) {
+
+                emptyMsg.classList.remove('hidden');
+
+            } else {
+
+                emptyMsg.classList.add('hidden');
+
+            }
+
+        }
+
+
+
+        function clearSearch() {
+
+            const input = document.getElementById('search-input');
+
+            input.value = '';
+
+            filterMachines();
+
+            input.focus();
+
+        }
+
+
+
+        function selectMachine(machine) {
+
+            currentState.selectedMachine = machine;
+
+            renderPdfList();
+
+            navigateTo('pdf-list');
+
+        }
+
+
+
+        function renderPdfList() {
+
+            const machine = currentState.selectedMachine;
+
+            const isRam = currentState.category === 'ramclear';
+
+
+
+            if (!machine) return;
+
+
+
+            document.getElementById('pdf-machine-title').textContent = machine.name;
+
+            document.getElementById('pdf-count-label').textContent = `${machine.docs.length} file tài liệu PDF`;
+
+
+
+            const iconContainer = document.getElementById('pdf-list-icon');
+
+            const badge = document.getElementById('pdf-list-badge');
+
+
+
+            if (isRam) {
+
+                iconContainer.className = "w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 border border-pink-500/30 flex items-center justify-center text-xl shadow-inner";
+
+                iconContainer.innerHTML = `<i class="fa-solid ${machine.icon || 'fa-memory'}"></i>`;
+
+                badge.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/30";
+
+                badge.textContent = "RAM CLEAR";
+
+            } else {
+
+                iconContainer.className = "w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-xl shadow-inner";
+
+                iconContainer.innerHTML = `<i class="fa-solid ${machine.icon || 'fa-book-open'}"></i>`;
+
+                badge.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+
+                badge.textContent = "MANUAL";
+
+            }
+
+
+
+            const container = document.getElementById('pdf-items-container');
+
+            container.innerHTML = '';
+
+
+
+            machine.docs.forEach((doc, idx) => {
+
+                const item = document.createElement('div');
+
+                item.className = "group bg-slate-900 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-850 p-4 rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200 shadow-sm";
+
+                item.onclick = () => openPdfViewer(doc);
+
+
+
+                item.innerHTML = `
+
+                    <div class="flex items-center space-x-3.5 overflow-hidden">
+
+                        <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 group-hover:bg-blue-600 group-hover:text-white text-blue-400 font-bold text-sm flex items-center justify-center shrink-0 transition-colors">
+
+                            ${doc.id || (idx + 1)}
+
+                        </div>
+
+                        <div class="truncate">
+
+                            <h4 class="font-semibold text-slate-100 text-sm group-hover:text-blue-400 transition-colors truncate">${doc.title}</h4>
+
+                            <p class="text-[11px] text-slate-500 flex items-center gap-1.5 mt-0.5">
+
+                                <i class="fa-regular fa-file-pdf text-red-400"></i> Định dạng: Portable Document Format (PDF)
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-2 shrink-0">
+
+                        <span class="hidden sm:inline-block text-xs text-slate-400 group-hover:text-blue-300 transition-colors font-medium">Xem file</span>
+
+                        <div class="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-blue-600/20 flex items-center justify-center text-slate-400 group-hover:text-blue-400 transition-colors">
+
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                container.appendChild(item);
+
+            });
+
+        }
+
+
+
+        function openPdfViewer(doc) {
+
+            currentState.selectedDoc = doc;
+
+            
+
+            document.getElementById('pdf-viewer-title').textContent = doc.title;
+
+            document.getElementById('pdf-viewer-number').textContent = doc.id;
+
+            
+
+            const iframe = document.getElementById('pdf-iframe');
+
+            const openExternalBtn = document.getElementById('pdf-open-external');
+
+            const loading = document.getElementById('pdf-loading');
+
+
+
+            loading.classList.remove('hidden');
+
+            
+
+            iframe.src = doc.url;
+
+            openExternalBtn.href = doc.url;
+
+
+
+            iframe.onload = function() {
+
+                hidePdfLoading();
+
+            };
+
+
+
+            navigateTo('pdf-render');
+
+        }
+
+
+
+        function backToPdfList() {
+
+            const iframe = document.getElementById('pdf-iframe');
+
+            iframe.onload = null;
+
+            iframe.src = "";
+
+            navigateTo('pdf-list');
+
+        }
+
+
+
+        function updateHeaderAndBreadcrumb() {
+
+            const headerActions = document.getElementById('header-actions');
+
+            const breadcrumbContainer = document.getElementById('breadcrumb-container');
+
+            const bCategorySep = document.getElementById('breadcrumb-category-sep');
+
+            const bCategory = document.getElementById('breadcrumb-category');
+
+            const bMachineSep = document.getElementById('breadcrumb-machine-sep');
+
+            const bMachine = document.getElementById('breadcrumb-machine');
+
+
+
+            if (currentState.view === 'home') {
+
+                headerActions.innerHTML = `
+
+                    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700 hidden sm:inline-block">
+
+                        <i class="fa-solid fa-shield-halved text-blue-400 mr-1"></i> LUKE 2725
+
+                    </span>
+
+                `;
+
+                breadcrumbContainer.classList.add('hidden');
+
+            } else {
+
+                breadcrumbContainer.classList.remove('hidden');
+
+                
+
+                let backAction = "navigateTo('home')";
+
+                if (currentState.view === 'pdf-list') backAction = "navigateTo('machines')";
+
+                if (currentState.view === 'pdf-render') backAction = "backToPdfList()";
+
+
+
+                headerActions.innerHTML = `
+
+                    <button onclick="${backAction}" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition shadow-sm">
+
+                        <i class="fa-solid fa-arrow-left"></i> Quay lại
+
+                    </button>
+
+                `;
+
+            }
+
+
+
+            if (currentState.category) {
+
+                bCategorySep.classList.remove('hidden');
+
+                bCategory.classList.remove('hidden');
+
+                bCategory.textContent = currentState.category === 'ramclear' ? 'Ram Clear' : 'Manual';
+
+            } else {
+
+                bCategorySep.classList.add('hidden');
+
+                bCategory.classList.add('hidden');
+
+            }
+
+
+
+            if (currentState.selectedMachine && (currentState.view === 'pdf-list' || currentState.view === 'pdf-render')) {
+
+                bMachineSep.classList.remove('hidden');
+
+                bMachine.classList.remove('hidden');
+
+                bMachine.textContent = currentState.selectedMachine.name;
+
+            } else {
+
+                bMachineSep.classList.add('hidden');
+
+                bMachine.classList.add('hidden');
+
+            }
+
+        }
+
+
+
+        window.onload = function() {
+
+            navigateTo('home');
+
+        };
+
+    </script>
+
+</body>
+
+</html> 
