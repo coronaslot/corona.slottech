@@ -99,8 +99,8 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto pt-4">
                 <!-- Option 1: Ram Clear -->
-                <button onclick="selectCategory('ramclear')" class="group relative bg-gradient-to-br from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 border border-slate-700/70 hover:border-pink-500/50 rounded-2xl p-6 sm:p-8 text-left transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-pink-500/10 flex flex-col justify-between overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl group-hover:bg-pink-500/20 transition-all"></div>
+                <button onclick="selectCategory('ramclear')" class="group relative bg-gradient-to-br from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 border border-slate-700/70 hover:border-pink-500/50 rounded-2xl p-6 sm:p-8 text-left transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-pink-500/10 flex flex-col justify-between overflow-hidden cursor-pointer">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl group-hover:bg-pink-500/20 transition-all pointer-events-none"></div>
                     <div class="space-y-4 relative z-10">
                         <div class="w-16 h-16 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-2xl group-hover:scale-110 group-hover:bg-pink-500 group-hover:text-white transition-all duration-300 shadow-inner">
                             <i class="fa-solid fa-memory"></i>
@@ -118,8 +118,8 @@
                 </button>
 
                 <!-- Option 2: Manual -->
-                <button onclick="selectCategory('manual')" class="group relative bg-gradient-to-br from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 border border-slate-700/70 hover:border-emerald-500/50 rounded-2xl p-6 sm:p-8 text-left transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-emerald-500/10 flex flex-col justify-between overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                <button onclick="selectCategory('manual')" class="group relative bg-gradient-to-br from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 border border-slate-700/70 hover:border-emerald-500/50 rounded-2xl p-6 sm:p-8 text-left transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-emerald-500/10 flex flex-col justify-between overflow-hidden cursor-pointer">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none"></div>
                     <div class="space-y-4 relative z-10">
                         <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-inner">
                             <i class="fa-solid fa-book-open"></i>
@@ -149,7 +149,7 @@
                 <div class="relative w-full sm:w-64">
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
                     <input type="text" id="search-input" onkeyup="filterMachines()" placeholder="Tìm tên máy..." class="w-full bg-slate-950 border border-slate-700/80 rounded-xl pl-9 pr-8 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
-                    <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 text-xs">
+                    <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 text-xs cursor-pointer p-1">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -196,21 +196,21 @@
                     <h3 id="pdf-viewer-title" class="font-semibold text-white text-sm sm:text-base truncate">Document Title</h3>
                 </div>
                 <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
-                    <a id="pdf-open-external" href="#" target="_blank" class="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+                    <a id="pdf-open-external" href="#" target="_blank" class="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition flex items-center gap-1.5 cursor-pointer">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở tab mới
                     </a>
-                    <button onclick="backToPdfList()" class="px-3 py-1.5 text-xs font-medium bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition flex items-center gap-1.5">
+                    <button onclick="backToPdfList()" class="px-3 py-1.5 text-xs font-medium bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition flex items-center gap-1.5 cursor-pointer">
                         <i class="fa-solid fa-xmark"></i> Đóng
                     </button>
                 </div>
             </div>
 
             <div class="w-full bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl h-[70vh] sm:h-[78vh] relative">
-                <div id="pdf-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/90 z-10 space-y-3">
+                <div id="pdf-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/90 z-10 space-y-3 pointer-events-none">
                     <div class="w-8 h-8 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
-                    <p class="text-xs text-slate-400">Đang tải tài liệu PDF...</p>
+                    <p class="text-xs text-slate-400">Đang tải và render tài liệu PDF trực tuyến...</p>
                 </div>
-                <!-- Container chứa khung nhúng Google Docs Viewer chuẩn xem trực tiếp trên mọi máy tính & điện thoại -->
+                <!-- Khung hiển thị PDF chuẩn -->
                 <div id="pdf-container-box" class="w-full h-full"></div>
             </div>
         </section>
@@ -362,7 +362,7 @@
                 const badgeColor = isRam ? 'bg-pink-500/10 text-pink-400 border-pink-500/20' : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
 
                 card.innerHTML = `
-                    <div class="space-y-3">
+                    <div class="space-y-3 pointer-events-none">
                         <div class="flex items-center justify-between">
                             <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 text-lg ${hoverBorderColor} transition-colors">
                                 <i class="fa-solid ${m.icon || 'fa-vr-cardboard'}"></i>
@@ -372,137 +372,4 @@
                             </span>
                         </div>
                         <div>
-                            <span class="text-[11px] text-slate-500 font-medium">${m.categoryName || 'Casino Equipment'}</span>
-                            <h4 class="font-bold text-white text-base ${hoverBorderColor} transition-colors line-clamp-1">${m.name}</h4>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                        <span>Mở tài liệu</span>
-                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:translate-x-1 transition-transform"></i>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-
-            document.getElementById('empty-machine-search').classList.add('hidden');
-        }
-
-        function filterMachines() {
-            const input = document.getElementById('search-input');
-            const clearBtn = document.getElementById('clear-search-btn');
-            const filter = input.value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.machine-card');
-            let visibleCount = 0;
-
-            if (filter.length > 0) {
-                clearBtn.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
-            }
-
-            cards.forEach(card => {
-                const name = card.getAttribute('data-name');
-                if (name.includes(filter)) {
-                    card.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-
-            const emptyMsg = document.getElementById('empty-machine-search');
-            if (visibleCount === 0) {
-                emptyMsg.classList.remove('hidden');
-            } else {
-                emptyMsg.classList.add('hidden');
-            }
-        }
-
-        function clearSearch() {
-            const input = document.getElementById('search-input');
-            input.value = '';
-            filterMachines();
-            input.focus();
-        }
-
-        function selectMachine(machine) {
-            currentState.selectedMachine = machine;
-            renderPdfList();
-            navigateTo('pdf-list');
-        }
-
-        function renderPdfList() {
-            const machine = currentState.selectedMachine;
-            const isRam = currentState.category === 'ramclear';
-
-            if (!machine) return;
-
-            document.getElementById('pdf-machine-title').textContent = machine.name;
-            document.getElementById('pdf-count-label').textContent = `${machine.docs.length} file tài liệu PDF`;
-
-            const iconContainer = document.getElementById('pdf-list-icon');
-            const badge = document.getElementById('pdf-list-badge');
-
-            if (isRam) {
-                iconContainer.className = "w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 border border-pink-500/30 flex items-center justify-center text-xl shadow-inner";
-                iconContainer.innerHTML = `<i class="fa-solid ${machine.icon || 'fa-memory'}"></i>`;
-                badge.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/30";
-                badge.textContent = "RAM CLEAR";
-            } else {
-                iconContainer.className = "w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-xl shadow-inner";
-                iconContainer.innerHTML = `<i class="fa-solid ${machine.icon || 'fa-book-open'}"></i>`;
-                badge.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
-                badge.textContent = "MANUAL";
-            }
-
-            const container = document.getElementById('pdf-items-container');
-            container.innerHTML = '';
-
-            machine.docs.forEach((doc, idx) => {
-                const item = document.createElement('div');
-                item.className = "group bg-slate-900 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-850 p-4 rounded-xl flex items-center justify-between cursor-pointer transition-all duration-200 shadow-sm";
-                item.onclick = () => openPdfViewer(doc);
-
-                item.innerHTML = `
-                    <div class="flex items-center space-x-3.5 overflow-hidden">
-                        <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 group-hover:bg-blue-600 group-hover:text-white text-blue-400 font-bold text-sm flex items-center justify-center shrink-0 transition-colors">
-                            ${doc.id || (idx + 1)}
-                        </div>
-                        <div class="truncate">
-                            <h4 class="font-semibold text-slate-100 text-sm group-hover:text-blue-400 transition-colors truncate">${doc.title}</h4>
-                            <p class="text-[11px] text-slate-500 flex items-center gap-1.5 mt-0.5">
-                                <i class="fa-regular fa-file-pdf text-red-400"></i> Định dạng: Portable Document Format (PDF)
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                        <span class="hidden sm:inline-block text-xs text-slate-400 group-hover:text-blue-300 transition-colors font-medium">Xem file</span>
-                        <div class="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-blue-600/20 flex items-center justify-center text-slate-400 group-hover:text-blue-400 transition-colors">
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-        }
-
-        function openPdfViewer(doc) {
-            currentState.selectedDoc = doc;
-            
-            document.getElementById('pdf-viewer-title').textContent = doc.title;
-            document.getElementById('pdf-viewer-number').textContent = doc.id;
-            
-            const containerBox = document.getElementById('pdf-container-box');
-            const openExternalBtn = document.getElementById('pdf-open-external');
-            const loading = document.getElementById('pdf-loading');
-
-            loading.classList.remove('hidden');
-            openExternalBtn.href = doc.url;
-
-            // Sử dụng Google Docs Viewer nhúng qua iframe để ép trình duyệt PC và Mobile hiển thị trực tiếp ảnh/nội dung PDF thay vì tải về
-            const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(doc.url)}&embedded=true`;
-
-            containerBox.innerHTML = `<iframe id="pdf-iframe" src="${viewerUrl}" class="w-full h-full border-0"></iframe>`;
-            
-            const iframe = document.getElementById('pdf-iframe');
-            iframe.onload =
+                            <span class="text-[11px] text-slate-500 font-
