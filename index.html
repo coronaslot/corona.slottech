@@ -210,7 +210,7 @@
                     <div class="w-8 h-8 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
                     <p class="text-xs text-slate-400">Đang tải tài liệu PDF...</p>
                 </div>
-                <!-- Container chứa nội dung hiển thị PDF tự động thích ứng Mobile / PC -->
+                <!-- Container chứa khung nhúng Google Docs Viewer chuẩn xem trực tiếp trên mọi máy tính & điện thoại -->
                 <div id="pdf-container-box" class="w-full h-full"></div>
             </div>
         </section>
@@ -499,80 +499,10 @@
             loading.classList.remove('hidden');
             openExternalBtn.href = doc.url;
 
-            // Kiểm tra thiết bị di động để dùng thẻ <embed>, máy tính dùng <iframe> chuẩn
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            // Sử dụng Google Docs Viewer nhúng qua iframe để ép trình duyệt PC và Mobile hiển thị trực tiếp ảnh/nội dung PDF thay vì tải về
+            const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(doc.url)}&embedded=true`;
 
-            if (isMobile) {
-                containerBox.innerHTML = `<embed src="${doc.url}" type="application/pdf" width="100%" height="100%" />`;
-                setTimeout(() => { hidePdfLoading(); }, 800);
-            } else {
-                containerBox.innerHTML = `<iframe id="pdf-iframe" src="${doc.url}" class="w-full h-full border-0"></iframe>`;
-                const iframe = document.getElementById('pdf-iframe');
-                iframe.onload = function() {
-                    hidePdfLoading();
-                };
-            }
-
-            navigateTo('pdf-render');
-        }
-
-        function backToPdfList() {
-            const containerBox = document.getElementById('pdf-container-box');
-            containerBox.innerHTML = "";
-            navigateTo('pdf-list');
-        }
-
-        function updateHeaderAndBreadcrumb() {
-            const headerActions = document.getElementById('header-actions');
-            const breadcrumbContainer = document.getElementById('breadcrumb-container');
-            const bCategorySep = document.getElementById('breadcrumb-category-sep');
-            const bCategory = document.getElementById('breadcrumb-category');
-            const bMachineSep = document.getElementById('breadcrumb-machine-sep');
-            const bMachine = document.getElementById('breadcrumb-machine');
-
-            if (currentState.view === 'home') {
-                headerActions.innerHTML = `
-                    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700 hidden sm:inline-block">
-                        <i class="fa-solid fa-shield-halved text-blue-400 mr-1"></i> LUKE 2725
-                    </span>
-                `;
-                breadcrumbContainer.classList.add('hidden');
-            } else {
-                breadcrumbContainer.classList.remove('hidden');
-                
-                let backAction = "navigateTo('home')";
-                if (currentState.view === 'pdf-list') backAction = "navigateTo('machines')";
-                if (currentState.view === 'pdf-render') backAction = "backToPdfList()";
-
-                headerActions.innerHTML = `
-                    <button onclick="${backAction}" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition shadow-sm">
-                        <i class="fa-solid fa-arrow-left"></i> Quay lại
-                    </button>
-                `;
-            }
-
-            if (currentState.category) {
-                bCategorySep.classList.remove('hidden');
-                bCategory.classList.remove('hidden');
-                bCategory.textContent = currentState.category === 'ramclear' ? 'Ram Clear' : 'Manual';
-            } else {
-                bCategorySep.classList.add('hidden');
-                bCategory.classList.add('hidden');
-            }
-
-            if (currentState.selectedMachine && (currentState.view === 'pdf-list' || currentState.view === 'pdf-render')) {
-                bMachineSep.classList.remove('hidden');
-                bMachine.classList.remove('hidden');
-                bMachine.textContent = currentState.selectedMachine.name;
-            } else {
-                bMachineSep.classList.add('hidden');
-                bMachine.classList.add('hidden');
-            }
-        }
-
-        window.onload = function() {
-            navigateTo('home');
-        };
-    </script>
-</body>
-</html>
+            containerBox.innerHTML = `<iframe id="pdf-iframe" src="${viewerUrl}" class="w-full h-full border-0"></iframe>`;
+            
+            const iframe = document.getElementById('pdf-iframe');
+            iframe.onload =
