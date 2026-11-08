@@ -51,6 +51,47 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #475569;
         }
+
+        
+/* Áp dụng ảnh nền cho toàn bộ trang web */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Hoặc font bạn đang dùng */
+    color: #e2e8f0; /* Màu chữ sáng để nổi bật trên nền tối */
+
+    /* BẮT ĐẦU PHẦN NỀN PICTURE D */
+    /* Lớp phủ gradient tối dần từ trên xuống dưới để dễ đọc nội dung */
+    background-image: 
+        linear-gradient(rgba(15, 23, 42, 0.93), rgba(15, 23, 42, 0.98)),
+        /* Link ảnh nền ma trận dữ liệu từ Picture D */
+        url('https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=2070&auto=format&fit=crop'); 
+    
+    /* Thiết lập thuộc tính nền */
+    background-size: cover;          /* Phủ kín toàn bộ màn hình */
+    background-position: center;      /* Căn giữa hình ảnh */
+    background-repeat: no-repeat;    /* Không lặp lại ảnh */
+    background-attachment: fixed;    /* Giữ nền cố định khi cuộn trang */
+    /* KẾT THÚC PHẦN NỀN PICTURE D */
+}
+
+/* Đảm bảo các khung nội dung của bạn có độ mờ nhẹ (backdrop-filter) để tạo hiệu ứng kính mờ (glassmorphism) giống trong hình D */
+.content-box, 
+.card, 
+.header, 
+.manual-item, 
+.manufacturer-link {
+    background: rgba(30, 41, 59, 0.6) !important; /* Màu nền khung tối, mờ */
+    backdrop-filter: blur(8px); /* Hiệu ứng làm mờ nền phía sau khung */
+    -webkit-backdrop-filter: blur(8px); /* Cho trình duyệt Safari */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Viền khung mỏng, sáng */
+    border-radius: 8px; /* Bo góc nhẹ */
+}
+
+
+
+
+        
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
