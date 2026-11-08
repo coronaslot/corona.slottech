@@ -480,13 +480,13 @@ body {
                 const hoverBorderColor = isRam ? 'group-hover:text-pink-400' : 'group-hover:text-emerald-400';
                 const badgeColor = isRam ? 'bg-pink-500/10 text-pink-400 border-pink-500/20' : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
 
-                card.innerHTML = `
-    <!-- 👉 Khung hình ảnh thumbnail của hãng máy -->
-    <div class="w-full h-32 bg-slate-950 overflow-hidden rounded-t-xl -mt-6 -mx-6 mb-4">
-        <img src="${m.image || 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80'}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${m.name}">
+               card.innerHTML = `
+    <!-- 🖼️ Khung ảnh đã được căn chỉnh chuẩn, ôm gọn trong card -->
+    <div class="w-full h-32 bg-slate-950 overflow-hidden rounded-t-xl mb-3">
+        <img src="${m.image || 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80'}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" alt="${m.name}">
     </div>
 
-    <div class="space-y-3 pointer-events-none">
+    <div class="space-y-3 pointer-events-none px-1">
         <div class="flex items-center justify-between">
             <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 text-lg ${hoverBorderColor} transition-colors">
                 <i class="fa-solid ${m.icon || 'fa-vr-cardboard'}"></i>
@@ -500,7 +500,7 @@ body {
             <h4 class="font-bold text-white text-base ${hoverBorderColor} transition-colors line-clamp-1">${m.name}</h4>
         </div>
     </div>
-    <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 pointer-events-none">
+    <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 pointer-events-none px-1">
         <span>Mở tài liệu</span>
         <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:translate-x-1 transition-transform"></i>
     </div>
